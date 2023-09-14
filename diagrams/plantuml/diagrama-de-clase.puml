@@ -1,0 +1,49 @@
+@startuml
+allowmixing
+
+skinparam database {
+    BorderColor pink
+    BackgroundColor purple
+    ArrowColor purple
+    FontColor pink
+}
+
+skinparam rectangle {
+    BorderColor purple
+    BackgroundColor lightpink
+    ArrowColor purple
+}
+
+skinparam class {
+    BorderColor purple
+    BackgroundColor pink
+    ArrowColor purple
+    AttributeIconSize 0
+}
+
+skinparam note {
+    BorderColor darkslateblue
+    BackgroundColor #90c0f0
+    FontColor darkslateblue
+}
+
+component Application {
+    package com.valva.proyectointegrador #d9a4ff {
+
+        package persistence {
+            package repository
+            package entities
+        }
+        package service
+        package controller
+        package model
+
+        controller o-- service
+        service o-- repository
+        controller .> model
+        service .> model
+
+    }
+
+}
+@enduml

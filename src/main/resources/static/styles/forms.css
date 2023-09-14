@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@400;500;600;700&display=swap");
+
+fieldset {
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid #888;
+  box-shadow: 0.25rem 0.25rem 0.4rem 0.2rem rgba(181, 181, 181, 0.75);
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 4rem;
+}
+
+.form {
+  margin-top: 2rem;
+  width: 50%;
+}
+
+.form-btn {
+  font-size: 1.5rem;
+  font-family: Karla, sans-serif;
+  font-weight: bold;
+  border-radius: 1.15rem;
+  margin: 2rem 0;
+  width: 100%;
+}
+
+.container-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-container .input-btn {
+  color: white;
+  background-color: #78bbfa;
+  border: none;
+}
+
+.form-container .input-btn:hover {
+  background-color: var(--primary-color);
+  transition: all 1s;
+}
+
+.form-container .reset-btn {
+  color: white;
+  background-color: #888888;
+  border: none;
+}
+
+.form-container .reset-btn:hover {
+  background-color: #696969;
+  transition: all 1s;
+}
+
+.form h1 {
+  color: #333333;
+  font-family: Inter, sans-serif;
+  font-size: 3.25rem;
+  font-weight: bold;
+  line-height: 4.5rem;
+}
+
+.form-container p a {
+  color: var(--primary-color-lighter);
+  text-decoration: none;
+}
+
+.form-container p a:hover {
+  color: var(--primary-color);
+}
+
+.form-container p {
+  font-size: 1.25rem;
+  margin-top: 2rem;
+  margin-bottom: 6rem;
+}
+
+.form-container input,
+.form-container textarea,
+.form-container select {
+  font-size: 1.25rem;
+  border: 1.5px solid rgb(128, 127, 127);
+  border-radius: 1.5rem;
+  padding: 1rem;
+  margin: 1rem 0;
+  width: 100%;
+  outline: none;
+}
+
+.form-container input:focus,
+.form-container textarea:focus,
+.form-container select:focus {
+  border: 2px solid var(--primary-color-darker);
+  background-color: var(--secondary-color-lighter);
+  color: var(--primary-color-darker);
+}
+
+.form-container input.left-btn {
+  margin-right: 1rem;
+}
+
+.form-container input.right-btn {
+  margin-left: 1rem;
+}

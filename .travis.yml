@@ -1,0 +1,11 @@
+
+language: java
+sudo: true
+jdk: oraclejdk16
+before_install:
+       - chmod +x mvnw
+notifications:
+  email:
+    recipients:
+      - vavarela.rodriguez@gmail.com
+    on_failure: always

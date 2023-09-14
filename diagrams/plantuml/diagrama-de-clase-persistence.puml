@@ -1,0 +1,79 @@
+@startuml
+allowmixing
+
+skinparam database {
+    BorderColor pink
+    BackgroundColor purple
+    ArrowColor purple
+    FontColor pink
+}
+
+skinparam rectangle {
+    BorderColor purple
+    BackgroundColor lightpink
+    ArrowColor purple
+}
+
+skinparam class {
+    BorderColor purple
+    BackgroundColor pink
+    ArrowColor purple
+    AttributeIconSize 0
+}
+
+skinparam note {
+    BorderColor darkslateblue
+    BackgroundColor #90c0f0
+    FontColor darkslateblue
+}
+
+component Application {
+    package com.valva.proyectointegrador #d9a4ff {
+
+        package persistence {
+            package repository {
+                interface "IRepository<T>"{
+                    + insertarNuevo(T t) : T
+                    + consultarTodos() : List<T>
+                    + consultarPorId(Integer id) : T
+                    + actualizar(T t) : T
+                    + eliminar(Integer id) : void
+                }
+
+                package impl {
+                    interface "IOdontologoRepository<Odontologo>" {
+                        + buscar(Integer matricula) : Optional<Odontologo>
+                        + buscar(String nombre) : Optional<List<Odontologo>>
+                        + buscar(String nombre, String apellido) : Optional<List<Odontologo>>
+                    }
+                    interface "IPacienteRepositoryH<Paciente>" {
+                        + buscar(Integer dni) : Optional<Paciente>
+                        + buscar(String nombre) : Optional<List<Paciente>>
+                        + buscar(String nombre, String apellido) : Optional<List<Paciente>>
+                    }
+                    interface "IDomicilioRepository<Domicilio>" {
+                        + buscar(String calle) : Optional<List<Domicilio>>
+                        + buscar(String calle, Integer numero) : Optional<List<Domicilio>>
+                        + buscar(String calle, Integer numero, String localidad, String provincia) : Optional<Domicilio>
+                    }
+                    interface "ITurnoRepository<Turno>" {
+                        + buscar(String nombrePaciente, String apellidoPaciente, String nombreOdontologo, String apellidoOdontologo) : Optional<List<Turno>>
+                        + buscar(String nombreOdontologo, String apellidoOdontologo) : Optional<List<Turno>>
+                        + buscar(Integer matricula, Integer dni) : Optional<List<Turno>>
+                    }
+                }
+            }
+
+            package entities {
+                class Paciente
+                class Odontologo
+                class Domicilio
+                class Turno
+            }
+        }
+
+        repository ..> entities
+    }
+
+}
+@enduml

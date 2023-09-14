@@ -1,0 +1,67 @@
+@startuml
+allowmixing
+
+skinparam database {
+    BorderColor pink
+    BackgroundColor purple
+    ArrowColor purple
+    FontColor pink
+}
+
+skinparam rectangle {
+    BorderColor purple
+    BackgroundColor lightpink
+    ArrowColor purple
+}
+
+skinparam class {
+    BorderColor purple
+    BackgroundColor pink
+    ArrowColor purple
+    AttributeIconSize 0
+}
+
+skinparam note {
+    BorderColor darkslateblue
+    BackgroundColor #90c0f0
+    FontColor darkslateblue
+}
+
+component Application {
+    package com.valva.proyectointegrador #d9a4ff {
+
+        package service
+
+        package persistence {
+            package repository
+            package entities
+        }
+
+        package controller {
+            interface CRUDController {
+                + buscar(Integer id) : ResponseEntity<T>
+                + crear(T t) : ResponseEntity<T>
+                + actualizar(T t) : ResponseEntity<T>
+                + consultarTodos() : ResponseEntity<List<T>>
+                + eliminar(Integer id) : void
+            }
+            class PacienteController implements CRUDController
+            class OdontologoController  implements CRUDController
+            class TurnoController implements CRUDController
+        }
+
+        package model {
+            class OdontologoDto
+            class PacienteDto
+            class DomicilioDto
+            class TurnoDto
+        }
+
+        controller ..> model
+        service .> model
+        controller o-- service
+        service o--- persistence
+    }
+
+}
+@enduml

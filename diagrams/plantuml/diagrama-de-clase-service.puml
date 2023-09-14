@@ -1,0 +1,72 @@
+@startuml
+allowmixing
+
+skinparam database {
+    BorderColor pink
+    BackgroundColor purple
+    ArrowColor purple
+    FontColor pink
+}
+
+skinparam rectangle {
+    BorderColor purple
+    BackgroundColor lightpink
+    ArrowColor purple
+}
+
+skinparam class {
+    BorderColor purple
+    BackgroundColor pink
+    ArrowColor purple
+    AttributeIconSize 0
+}
+
+skinparam note {
+    BorderColor darkslateblue
+    BackgroundColor #90c0f0
+    FontColor darkslateblue
+}
+
+component Application {
+    package com.valva.proyectointegrador #d9a4ff {
+
+        package persistence {
+            package repository
+            package entities
+        }
+
+        package service {
+
+            interface CRUDService {
+                + buscar(Integer id) : T
+                + crear(T t) : T
+                + actualizar(T t) : T
+                + consultarTodos() : List<T>
+                + eliminar(Integer id) : void
+            }
+
+            interface PacienteService extends CRUDService {
+                + buscar(Integer dni) : PacienteDto
+                + buscar(String nombre) : List<PacienteDto>
+                + buscar(String nombre, String apellido) : List<PacienteDto>
+            }
+            interface TurnoService extends CRUDService {
+                + buscar(String nombrePaciente, String apellidoPaciente, String nombreOdontologo, String apellidoOdontologo) : List<TurnoDto>
+                + buscar(String nombreOdontologo, String apellidoOdontologo) : List<TurnoDto>
+                + buscar(Integer matricula, Integer dni) : List<TurnoDto>
+            }
+            interface OdontologoService extends CRUDService {
+                + buscar(Integer matricula); : OdontologoDto
+                + buscar(String nombre) : List<OdontologoDto>
+                + buscar(String nombre, String apellido) : List<OdontologoDto>
+            }
+        }
+
+        package controller
+
+        controller o-- service
+        service o-- persistence
+    }
+
+}
+@enduml
